@@ -41,6 +41,7 @@ public:
     Q_PROPERTY(Fact* lightsLevel2        READ lightsLevel2        CONSTANT)
     Q_PROPERTY(Fact* pilotGain           READ pilotGain           CONSTANT)
     Q_PROPERTY(Fact* inputHold           READ inputHold     CONSTANT)
+    Q_PROPERTY(Fact* winchTurns          READ winchTurns          CONSTANT)
     Q_PROPERTY(Fact* rangefinderDistance READ rangefinderDistance CONSTANT)
 
     Fact* camTilt             (void) { return &_camTiltFact; }
@@ -49,6 +50,7 @@ public:
     Fact* lightsLevel2        (void) { return &_lightsLevel2Fact; }
     Fact* pilotGain           (void) { return &_pilotGainFact; }
     Fact* inputHold           (void) { return &_inputHoldFact; }
+    Fact* winchTurns          (void) { return &_winchTurnsFact; }
     Fact* rangefinderDistance (void) { return &_rangefinderDistanceFact; }
 
     static const char* _camTiltFactName;
@@ -58,6 +60,7 @@ public:
     static const char* _pilotGainFactName;
     static const char* _inputHoldFactName;
     static const char* _rollPitchToggleFactName;
+    static const char* _winchTurnsFactName;
     static const char* _rangefinderDistanceFactName;
 
     static const char* _settingsGroup;
@@ -70,6 +73,7 @@ private:
     Fact            _pilotGainFact;
     Fact            _inputHoldFact;
     Fact            _rollPitchToggleFact;
+    Fact            _winchTurnsFact;
     Fact            _rangefinderDistanceFact;
 };
 

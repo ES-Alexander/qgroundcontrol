@@ -234,6 +234,8 @@ void ArduSubFirmwarePlugin::_handleNamedValueFloat(mavlink_message_t* message)
         _infoFactGroup.getFact("pilotGain")->setRawValue(value.value * 100);
     } else if (name == "InputHold") {
         _infoFactGroup.getFact("inputHold")->setRawValue(value.value);
+    } else if (name == "WinchTurns") {
+        _infoFactGroup.getFact("winchTurns")->setRawValue(value.value);
     } else if (name == "RollPitch") {
         _infoFactGroup.getFact("rollPitchToggle")->setRawValue(value.value);
     }
@@ -272,6 +274,7 @@ const char* APMSubmarineFactGroup::_lightsLevel2FactName        = "lights2";
 const char* APMSubmarineFactGroup::_pilotGainFactName           = "pilotGain";
 const char* APMSubmarineFactGroup::_inputHoldFactName           = "inputHold";
 const char* APMSubmarineFactGroup::_rollPitchToggleFactName     = "rollPitchToggle";
+const char* APMSubmarineFactGroup::_winchTurnsFactName          = "winchTurns";
 const char* APMSubmarineFactGroup::_rangefinderDistanceFactName = "rangefinderDistance";
 
 APMSubmarineFactGroup::APMSubmarineFactGroup(QObject* parent)
@@ -283,6 +286,7 @@ APMSubmarineFactGroup::APMSubmarineFactGroup(QObject* parent)
     , _pilotGainFact           (0, _pilotGainFactName,           FactMetaData::valueTypeDouble)
     , _inputHoldFact           (0, _inputHoldFactName,           FactMetaData::valueTypeDouble)
     , _rollPitchToggleFact     (0, _rollPitchToggleFactName,     FactMetaData::valueTypeDouble)
+    , _winchTurnsFact          (0, _winchTurnsFactName,          FactMetaData::valueTypeDouble)
     , _rangefinderDistanceFact (0, _rangefinderDistanceFactName, FactMetaData::valueTypeDouble)
 {
     _addFact(&_camTiltFact,             _camTiltFactName);
@@ -292,6 +296,7 @@ APMSubmarineFactGroup::APMSubmarineFactGroup(QObject* parent)
     _addFact(&_pilotGainFact,           _pilotGainFactName);
     _addFact(&_inputHoldFact,           _inputHoldFactName);
     _addFact(&_rollPitchToggleFact    , _rollPitchToggleFactName);
+    _addFact(&_winchTurnsFact         , _winchTurnsFactName);
     _addFact(&_rangefinderDistanceFact, _rangefinderDistanceFactName);
 
     // Start out as not available "--.--"
@@ -302,6 +307,7 @@ APMSubmarineFactGroup::APMSubmarineFactGroup(QObject* parent)
     _pilotGainFact.setRawValue           (std::numeric_limits<float>::quiet_NaN());
     _inputHoldFact.setRawValue           (std::numeric_limits<float>::quiet_NaN());
     _rollPitchToggleFact.setRawValue     (2); // 2 shows "Unavailable" in older firmwares
+    _winchTurnsFact.setRawValue          (std::numeric_limits<float>::quiet_NaN());
     _rangefinderDistanceFact.setRawValue (std::numeric_limits<float>::quiet_NaN());
 
 }

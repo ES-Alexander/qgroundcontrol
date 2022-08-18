@@ -46,6 +46,12 @@
     "decimalPlaces":    2,
     "units":            "m"
 },
+{
+    "name":             "winchTurns",
+    "shortDesc": "Winch Turns",
+    "type":             "int16",
+    "units":            "outward"
+},
 {   "name":             "rollPitchToggle",
     "shortDesc": "Roll/Pitch Toggle",
     "type":             "int16",
